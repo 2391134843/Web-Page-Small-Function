@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>音乐播放机</title>
+    <style type="text/css">
+    /* music */  
+    @-webkit-keyframes reverseRotataZ{  
+        0%{-webkit-transform: rotateZ(0deg);}  
+        100%{-webkit-transform: rotateZ(-360deg);}  
+    }  
+    @-webkit-keyframes rotataZ{  
+        0%{-webkit-transform: rotateZ(0deg);}  
+        100%{-webkit-transform: rotateZ(360deg);}  
+    }  
+#musicControl {
+     position:fixed;right:10px;
+     top:20px;
+     margin-top:0;
+     display:inline-block;
+     z-index:99999999
+     }  
+#musicControl a { 
+    display:inline-block;
+    width:25px;
+    height:25px;
+    overflow:hidden;
+    background:url('playmusic.png') no-repeat;
+    background-size:100%;
+    }  
+#musicControl a audio {
+    width:100%;
+    height:56px;
+    }  
+#musicControl a.stop { 
+    background-position:left bottom;
+    }  
+#musicControl a.on {
+     background-position:0px 1px;
+     -webkit-animation: reverseRotataZ 1.2s linear infinite;
+     }  
+#music_play_filter{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:99999998;
+    }  
+    
+    .centerstyle{
+     text-align: center ;
+    }
+    </style>
+
+    
+</head>
+<body>
+    <!-- <div align="centre"> -->
+            <h1 align="center">女儿国-李荣浩 张靓颖 - 歌曲</h1>
+          <!-- <h1>女儿国-李荣浩 张靓颖 - 歌曲</h1>  -->
+          <div class="centerstyle">
+                <img src="girl-country.jpg" width="500" height="700">
+          </div>
+    <!-- </div> -->
+    <div class="centerstyle">
+            男：
+            世上安得两全法<br>
+            不负如来也不负卿<br>
+            反省凡心损梵行<br>
+            从来如此莫聪明<br>
+            既生苦难我西行<br>
+            何生红颜你倾城<br>
+            如何抹去你身影<br>
+            如同忘却我姓名<br>
+            女：<br>
+            说什么王权富贵<br>
+            怕什么戒律清规<br>
+            心恋我百转千回<br>
+            快带我远走高飞<br>
+            念什么善恶慈悲<br>
+            等什么望穿秋水<br>
+            任来世枯朽成灰<br>
+            换今生与你相随<br>
+            男：<br>
+            世上安得两全法<br>
+            不负如来也不负卿<br>
+            反省凡心损梵行<br>
+            从来如此莫聪明<br>
+            既生苦难我西行<br>
+            何生红颜你倾城<br>
+            如何抹去你身影<br>
+            如同忘却我姓名<br>
+            女：<br>
+            说什么王权富贵<br>
+            怕什么戒律清规<br>
+            心恋我百转千回<br>
+            快带我远走高飞<br>
+            念什么善恶慈悲<br>
+            等什么望穿秋水<br>
+            任来世枯朽成灰<br>
+            换今生与你相随<br>
+            合：<br>
+            说什么王权富贵<br>
+            世上安得两全法<br>
+            怕什么戒律清规<br>
+            不负如来也不负卿<br>
+            心恋我百转千回<br>
+            反省凡心损梵行<br>
+            快带我远走高飞<br>
+            从来如此莫聪明<br>
+            念什么善恶慈悲<br>
+            既生苦难我西行<br>
+            等什么望穿秋水<br>
+            何生红颜你倾城<br>
+            任来世枯朽成灰<br>
+            如何抹去你身影<br>
+            换今生与你相随<br>
+            如同忘却我姓名<br> 
+    </div>
+        <span style="font-size:14px;"><!-- music -->  
+            <script type="text/javascript">
+            
+            function play_music(){  
+                    if ($('#mc_play').hasClass('on')){  
+                        $('#mc_play audio').get(0).pause();  
+                        $('#mc_play').attr('class','stop');  
+                    }else{  
+                        $('#mc_play audio').get(0).play();  
+                        $('#mc_play').attr('class','on');  
+                    }  
+                    $('#music_play_filter').hide();  
+                    event.stopPropagation(); //阻止冒泡  
+                }  
+                function just_play(id){  
+                    $('#mc_play audio').get(0).play();  
+                    $('#mc_play').attr('class','on');  
+                    if (typeof(id)!='undefined'){  
+                        $('#music_play_filter').hide();  
+                    }  
+                    event.stopPropagation(); //阻止冒泡  
+                }  
+                function is_weixn(){  
+                    return false;  
+                    var ua = navigator.userAgent.toLowerCase();  
+                    if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+                        return true;  
+                    } else {  
+                        return false;  
+                    }  
+                }  
+                var play_filter=document.getElementById('music_play_filter');  
+                play_filter.addEventListener('click', function(){  
+                    just_play(1);  
+                });  
+                play_filter.addEventListener('touchstart', function(){  
+                    just_play(1);  
+                });  
+                play_filter.addEventListener('touchend', function(){  
+                    just_play(1);  
+                });  
+                play_filter.addEventListener('touchmove', function(){  
+                    just_play(1);  
+                });  
+                play_filter.addEventListener('mousedown', function(){  
+                    just_play(1);  
+                });  
+                play_filter.addEventListener('mouseup', function(){  
+                    just_play(1);  
+                });  
+                play_filter.addEventListener('mousemove',function(){  
+                    just_play(1);  
+                });  
+                window.onload=function(){  
+                    if (!is_weixn()){  
+                        just_play();  
+                    }  
+                }  
+            </script>
+            </span>  
+        <span style="font-size:14px;"><span id="musicControl">  
+                <a id="mc_play" class="on" onclick="play_music();">  
+                    <audio id="musicfx" loop="loop" autoplay="autoplay">  
+                        <source src="张靓颖 - 女儿国.mp3" type="audio/mpeg">  
+                    </audio>  
+                </a>  
+         </span>
+    </span>  
+</body>
+</html>
